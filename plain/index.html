@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width">
+  <title></title>
+</head>
+<body>
+  <button id="js-show-dialog" class="text-button">ダイアログを開く</button>
+
+  <dialog id="js-dialog" class="dialog">
+    <p>ダイアログの説明文が入ります。</p>
+    <button id="js-dialog-accept">閉じる</button>
+  </dialog>
+
+  <script>
+    const showButton = document.getElementById('js-show-dialog');
+    const dialogElement = document.getElementById('js-dialog');
+    showButton.addEventListener('click', () => {
+      dialogElement.showModal();
+    });
+
+    const acceptButton = document.getElementById('js-dialog-accept');
+    acceptButton.addEventListener('click', () => {
+      dialogElement.close();
+    });
+  </script>
+</body>
+</html>
