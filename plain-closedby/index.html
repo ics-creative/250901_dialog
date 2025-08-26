@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width">
+  <title></title>
+</head>
+<body>
+  <div>
+    <label>ダイアログの設定：</label>
+    <select name="closedbyValue" id="js-select">
+      <option value="any" selected>closedby="any"</option>
+      <option value="closerequest">closedby="closerequest"</option>
+      <option value="none">closedby="none"</option> 
+    </select>
+  </div>
+
+  <br />
+
+  <button id="js-show-dialog" class="text-button">ダイアログを開く</button>
+
+  <dialog id="js-dialog" class="dialog">
+    <p>次のいずれかの動作でダイアログを閉じることができます。</p>
+    <div id="js-dialog-content"></div>
+    <button id="js-dialog-accept">閉じる</button>
+  </dialog>
+
+  <script>
+    const showButton = document.getElementById('js-show-dialog');
+    const dialogElement = document.getElementById('js-dialog');
+    const dialogContent = dialogElement.querySelector("#js-dialog-content");
+    showButton.addEventListener('click', () => {
+      dialogElement.showModal();
+    });
+
+    const acceptButton = document.getElementById('js-dialog-accept');
+    acceptButton.addEventListener('click', () => {
+      dialogElement.close();
+    });
+
+    const MESSAGE_ESC = "ESCキーを押下";
+    const MESSAGE_BACK_DROP = "ダイアログの背景を押下";  
+    const MESSAGE_CLOSE_BUTTON = "閉じるボタンを押下";
+
+    const MESSAGES = {
+      any: [MESSAGE_ESC, MESSAGE_BACK_DROP, MESSAGE_CLOSE_BUTTON],
+      closerequest: [MESSAGE_ESC, MESSAGE_BACK_DROP],
+      none: [MESSAGE_CLOSE_BUTTON],
+    }
+
+    const selectElement = document.querySelector("select");
+
+    const updateDialogContent = () => {
+      dialogContent.textContent = "";
+
+      dialogElement.setAttribute("closedby", selectElement.value)
+
+      const ul = document.createElement("ul");
+
+      MESSAGES[selectElement.value].forEach(text => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        ul.appendChild(li);
+        dialogContent.appendChild(ul);
+      });
+    }
+
+    selectElement.addEventListener("change", updateDialogContent);
+    window.addEventListener("DOMContentLoaded", updateDialogContent);
+  </script>
+</body>
+</html>
