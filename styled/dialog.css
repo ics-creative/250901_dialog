@@ -25,16 +25,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
 
-    .dialog__close-button__item {
-      width: 24px;
-      height: 24px;
-      background-color: #eaeaea;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  .dialog__close-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #eaeaea;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .dialog__title {
