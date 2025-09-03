@@ -4,47 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width">
-  <link href="../common.css" rel="stylesheet">
-  <link href="../dialog.css" rel="stylesheet">
-  <title>Document</title>
+  <link href="./common.css" rel="stylesheet">
+  <link href="./dialog.css" rel="stylesheet">
+  <title>独自のスタイルの作例（削除確認ダイアログ）</title>
 </head>
 <body>
-  <button id="js-show-dialog" class="text-button">削除確認ダイアログを開く</button>
+  <button id="showDialog" class="text-button">削除確認ダイアログを開く</button>
 
-  <dialog id="js-dialog" class="dialog">
-    <button id="js-dialog" class="dialog__close-button" aria-label="とじる">
+  <dialog class="dialog">
+    <button id="closeDialog" class="dialog__close-button" aria-label="とじる">
       <span class="dialog__close-button__item">
-        <img src="../icon_close.svg" alt="" />
+        <img src="./icon_close.svg" alt="" />
       </span>
     </button>
     <p class="dialog__title">設定を削除しますか？</p>
-    <p class="dialog__text">スタイル確認用のダイアログのため、削除を実行してもなにも起こりません。確認ができたらいずれかのボタンをクリックしてダイアログをとじてください。</p>
+    <p class="dialog__text">削除を押下してもなにも起こりません。確認ができたらいずれかのボタンをクリックしてダイアログをとじてください。</p>
     <div class="dialog__buttons">
-      <button id="js-dialog-cancel" class="button button--secondary button--width-full">キャンセル</button>
-      <button id="js-dialog-accept" class="button button--tertiary button--width-full">削除</button>
+      <button id="cancelDialog" class="button button--secondary button--width-full">キャンセル</button>
+      <button id="acceptDialog" class="button button--tertiary button--width-full">削除</button>
     </div>
   </dialog>
 
   <script>
-    const showButton = document.getElementById('js-show-dialog');
-    const dialogElement = document.querySelector('#js-dialog');
-    showButton.addEventListener('click', () => {
+    const showButton = document.querySelector("#showDialog");
+    const dialogElement = document.querySelector("dialog");
+    showButton.addEventListener("click", () => {
       dialogElement.showModal();
     });
 
-    const closeButton = dialogElement.querySelector('#js-dialog-cancel');
-    const acceptButton = dialogElement.querySelector('#js-dialog-accept');
-    const overlay = dialogElement.querySelector('#js-overlay')
+    const closeButton = dialogElement.querySelector("#closeDialog");
+    closeButton.addEventListener("click", () => {
+      dialogElement.close();
+    });    
 
-    const RETURN_VALUE_CANCEL = "cancel";
-    const RETURN_VALUE_ACCEPT = "accept";
-
-    closeButton.addEventListener('click', () => {
-      dialogElement.close(RETURN_VALUE_CANCEL);
+    const cancelButton = dialogElement.querySelector("#cancelDialog");
+    cancelButton.addEventListener("click", () => {
+      dialogElement.close();
     });
 
-    acceptButton.addEventListener('click', async () => {
-      dialogElement.close(RETURN_VALUE_ACCEPT);
+    const acceptButton = dialogElement.querySelector("#acceptDialog");
+    acceptButton.addEventListener("click", async () => {
+      dialogElement.close();
     });
   </script>
 </body>

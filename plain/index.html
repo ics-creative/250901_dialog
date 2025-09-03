@@ -4,26 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width">
-  <title></title>
+  <title>dialog要素の使い方の作例</title>
 </head>
 <body>
-  <button id="js-show-dialog" class="text-button">ダイアログを開く</button>
+  <button id="showDialog">モーダルダイアログを開く</button>
 
-  <dialog id="js-dialog" class="dialog">
+  <dialog>
     <p>ダイアログの説明文が入ります。</p>
-    <button id="js-dialog-accept">閉じる</button>
+    <button id="closeDialog">閉じる</button>
   </dialog>
 
   <script>
-    const showButton = document.getElementById('js-show-dialog');
-    const dialogElement = document.getElementById('js-dialog');
-    showButton.addEventListener('click', () => {
-      dialogElement.showModal();
+    const dialog = document.querySelector("dialog");
+
+    const showButton = document.querySelector("#showDialog");
+    showButton.addEventListener("click", () => {
+      dialog.showModal();
     });
 
-    const acceptButton = document.getElementById('js-dialog-accept');
-    acceptButton.addEventListener('click', () => {
-      dialogElement.close();
+    const closeButton = document.querySelector("#closeDialog");
+    closeButton.addEventListener("click", () => {
+      dialog.close();
     });
   </script>
 </body>

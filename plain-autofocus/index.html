@@ -4,25 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width">
-  <title></title>
+  <title>autofocus属性の作例</title>
 </head>
 <body>
-  <button id="js-show-dialog" class="text-button">ダイアログを開く</button>
+  <button id="showDialog">ダイアログを開く</button>
 
-  <dialog id="js-dialog" class="dialog" autofocus="">
-    <p>ダイアログのタイトル</p>
-    <button id="js-dialog-accept">閉じる</button>
+  <dialog>
+    <p tabindex="0" autofocus>ダイアログのタイトル</p>
+    <div>
+      <p>長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。</p>
+    </div>
+    <button id="closeDialog">閉じる</button>
   </dialog>
 
   <script>
-    const showButton = document.getElementById('js-show-dialog');
-    const dialogElement = document.getElementById('js-dialog');
-    showButton.addEventListener('click', () => {
+    const showButton = document.querySelector("#showDialog");
+    const dialogElement = document.querySelector("dialog");
+    showButton.addEventListener("click", () => {
       dialogElement.showModal();
     });
 
-    const acceptButton = document.getElementById('js-dialog-accept');
-    acceptButton.addEventListener('click', () => {
+    const acceptButton = document.querySelector("#closeDialog");
+    acceptButton.addEventListener("click", () => {
       dialogElement.close();
     });
   </script>
