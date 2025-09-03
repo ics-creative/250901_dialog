@@ -12,16 +12,18 @@
   <button id="showDialog" class="text-button">削除確認ダイアログを開く</button>
 
   <dialog class="dialog">
-    <button id="closeDialog" class="dialog__close-button" aria-label="とじる" autofocus>
-      <span class="dialog__close-icon">
-        <img src="./icon_close.svg" alt="" />
-      </span>
-    </button>
-    <p class="dialog__title">設定を削除しますか？</p>
-    <p class="dialog__text">削除を押下してもなにも起こりません。確認ができたらいずれかのボタンをクリックしてダイアログをとじてください。</p>
-    <div class="dialog__buttons">
-      <button id="cancelDialog" class="button button--secondary button--width-full">キャンセル</button>
-      <button id="acceptDialog" class="button button--tertiary button--width-full">削除</button>
+    <div class="dialog__inner">
+      <button id="closeDialog" class="dialog__close-button" aria-label="とじる" autofocus>
+        <span class="dialog__close-icon">
+          <img src="./icon_close.svg" alt="" />
+        </span>
+      </button>
+      <p class="dialog__title">設定を削除しますか？</p>
+      <p class="dialog__text">削除を押下してもなにも起こりません。確認ができたらいずれかのボタンをクリックしてダイアログをとじてください。</p>
+      <div class="dialog__buttons">
+        <button id="cancelDialog" class="button button--secondary button--width-full">キャンセル</button>
+        <button id="acceptDialog" class="button button--tertiary button--width-full">削除</button>
+      </div>
     </div>
   </dialog>
 
