@@ -63,18 +63,24 @@
     const selectElement = document.querySelector("select");
 
     const updateDialogContent = () => {
-      dialogContent.textContent = "";
+      const beforeList = dialogContent.querySelector("ul");
+      if(beforeList !== null) {
+        dialogContent.removeChild(beforeList);
+      }
 
-      dialogElement.setAttribute("closedby", selectElement.value)
+      if(selectElement.value !== "default") {
+        dialogElement.setAttribute("closedby", selectElement.value);
+      } else {
+        dialogElement.removeAttribute("closedby");
+      }
 
-      const ul = document.createElement("ul");
-
+      const newList = document.createElement("ul");
       MESSAGES[selectElement.value].forEach(text => {
         const li = document.createElement("li");
         li.textContent = text;
-        ul.appendChild(li);
-        dialogContent.appendChild(ul);
+        newList.appendChild(li);
       });
+      dialogContent.appendChild(newList);
     }
 
     selectElement.addEventListener("change", updateDialogContent);
