@@ -19,14 +19,12 @@
   </style>
 </head>
 <body>
-  <button id="showDialog">モーダルダイアログを開く</button>
+  <button id="showDialog">規約同意のダイアログを開く</button>
 
   <dialog>
-    <p tabindex="0" autofocus>モーダルダイアログのタイトル</p>
-    <div>
-      <p>長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。長文の説明文が入ります。</p>
-    </div>
-    <button id="closeDialog">閉じる</button>
+    <p>規約に同意しますか？</p>
+    <button id="cancelDialog">キャンセル</button>
+    <button id="closeDialog" autofocus>閉じる</button>
   </dialog>
 
   <script>
@@ -34,6 +32,11 @@
     const dialogElement = document.querySelector("dialog");
     showButton.addEventListener("click", () => {
       dialogElement.showModal();
+    });
+
+    const cancelButton = document.querySelector("#cancelDialog");
+    cancelButton.addEventListener("click", () => {
+      dialogElement.close();
     });
 
     const acceptButton = document.querySelector("#closeDialog");
