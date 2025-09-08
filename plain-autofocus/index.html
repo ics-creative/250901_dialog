@@ -1,51 +1,51 @@
 <!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>autofocus属性の作例</title>
-  <style>
-    html {
-      height: 100%;
-    }
-    body {
-      background-color: #fff;
-      display: grid;
-      height: 100%;
-      place-content: center;
-      place-items: center;
-      row-gap: 16px;
-      font-family: sans-serif;
-      padding: 0;
-      margin: 0;
-    }
-  </style>
-</head>
-<body>
-  <button id="showDialog">規約同意のダイアログを開く</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>autofocus属性の作例</title>
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        background-color: #fff;
+        display: grid;
+        height: 100%;
+        place-content: center;
+        place-items: center;
+        row-gap: 16px;
+        font-family: sans-serif;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="showDialog">規約同意のダイアログをひらく</button>
 
-  <dialog>
-    <p>規約に同意しますか？</p>
-    <button id="cancelDialog">キャンセル</button>
-    <button id="closeDialog" autofocus>同意する</button>
-  </dialog>
+    <dialog>
+      <p>規約に同意しますか？</p>
+      <button id="cancelDialog">キャンセル</button>
+      <button id="closeDialog" autofocus>同意する</button>
+    </dialog>
 
-  <script>
-    const showButton = document.querySelector("#showDialog");
-    const dialogElement = document.querySelector("dialog");
-    showButton.addEventListener("click", () => {
-      dialogElement.showModal();
-    });
+    <script>
+      const showButton = document.querySelector("#showDialog");
+      const dialogElement = document.querySelector("dialog");
+      showButton.addEventListener("click", () => {
+        dialogElement.showModal();
+      });
 
-    const cancelButton = document.querySelector("#cancelDialog");
-    cancelButton.addEventListener("click", () => {
-      dialogElement.close();
-    });
+      const cancelButton = document.querySelector("#cancelDialog");
+      cancelButton.addEventListener("click", () => {
+        dialogElement.close();
+      });
 
-    const acceptButton = document.querySelector("#closeDialog");
-    acceptButton.addEventListener("click", () => {
-      dialogElement.close();
-    });
-  </script>
-</body>
+      const acceptButton = document.querySelector("#closeDialog");
+      acceptButton.addEventListener("click", () => {
+        dialogElement.close();
+      });
+    </script>
+  </body>
 </html>
