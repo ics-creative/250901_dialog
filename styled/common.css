@@ -3,19 +3,11 @@
 }
 
 html {
-  height: 100%;
 }
 
 body {
   background-color: #fff;
-  display: grid;
-  height: 100%;
-  place-content: center;
-  place-items: center;
-  row-gap: 16px;
   font-family: sans-serif;
-  padding: 0;
-  margin: 0;
 }
 
 p {
@@ -26,13 +18,10 @@ p {
 button {
   padding: 0;
   font-family: inherit;
+  font-size: inherit;
+  font-weight: normal;
   appearance: none;
   cursor: pointer;
   background-color: transparent;
   border: none;
-}
-
-.text-button {
-  color: #3223B3;
-  text-decoration: underline;
 }
