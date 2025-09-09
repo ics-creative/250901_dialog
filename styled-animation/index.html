@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../styled/common.css" rel="stylesheet" />
+  <link href="../styled/button.css" rel="stylesheet" />
+  <link href="./dialog.css" rel="stylesheet" />
+  <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+  <title>CSSアンカーポジショニング</title>
+  <style>
+    .buttonList {
+      display: grid;
+      gap: 128px;
+      grid-template-columns: 1fr 1fr;
+      place-items: center;
+    }
+    .buttonShow {
+      font-size: 32px;
+      width: 64px;
+      height: 64px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 8px;
+      background: #f0f0f0;
+      transition: all 0.2s;
+      &:hover {
+        background: #e0e0e0;
+      }
+      &:active {
+        background: #d0d0d0;
+        scale: 0.8;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="buttonList">
+  <button class="buttonShow" style="anchor-name: --button1">
+    <span class="material-symbols-outlined" translate="no"> person </span>
+  </button>
+  <button class="buttonShow" style="anchor-name: --button2">
+    <span class="material-symbols-outlined" translate="no"> favorite </span>
+  </button>
+  <button class="buttonShow" style="anchor-name: --button3">
+    <span class="material-symbols-outlined" translate="no"> star </span>
+  </button>
+  <button class="buttonShow" style="anchor-name: --button4">
+        <span class="material-symbols-outlined" translate="no">
+          search_check
+        </span>
+  </button>
+</div>
+
+<dialog class="dialog">
+  <div class="dialog__inner">
+    <button id="buttonClose" class="dialog__close-button" autofocus>
+      <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>とじる</title>
+        <path
+                d="M13.8995 12.4853L12.4853 13.8996L4 5.41427L5.41422 4.00006L13.8995 12.4853Z"
+                fill="#605F6B"
+        />
+        <path
+                d="M12.4853 4.00001L13.8995 5.41422L5.41421 13.8995L4 12.4853L12.4853 4.00001Z"
+                fill="#605F6B"
+        />
+      </svg>
+    </button>
+    <p class="dialog__title">確認ダイアログ</p>
+    <p class="dialog__text">
+      これはdialog要素を使ったダイアログの例です。アンカーポジショニングとCSS
+      Transitionでモーションをつけています。
+    </p>
+    <div class="dialog__buttons">
+      <button
+              id="buttonCancel"
+              class="button button--secondary button--width-full"
+      >
+        キャンセル
+      </button>
+      <button id="buttonAccept" class="button button--width-full">
+        確認した
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const buttonListShow = document.querySelectorAll(".buttonShow");
+  const dialogElement = document.querySelector("dialog");
+  buttonListShow.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      // 押下されたボタンのアンカー名を取得して dialog に設定
+      const anchorName = `--button${index + 1}`;
+      dialogElement.style.transitionDuration = "0s"; // トランジションを一旦無効化
+      dialogElement.style.setProperty("--anchor-name", anchorName);
+
+      requestAnimationFrame(() => {
+        dialogElement.style.transitionDuration = null;
+        dialogElement.showModal();
+      });
+    });
+  });
+
+  const buttonClose = dialogElement.querySelector("#buttonClose");
+  buttonClose.addEventListener("click", () => {
+    dialogElement.close();
+  });
+
+  const buttonCancel = dialogElement.querySelector("#buttonCancel");
+  buttonCancel.addEventListener("click", () => {
+    dialogElement.close();
+  });
+
+  const buttonAccept = dialogElement.querySelector("#buttonAccept");
+  buttonAccept.addEventListener("click", () => {
+    dialogElement.close();
+  });
+</script>
+</body>
+</html>
